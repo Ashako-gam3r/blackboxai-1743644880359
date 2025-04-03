@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Pac-Man</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .game-grid {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1;
+        }
+        .wall { color: #2563eb; }
+        .pellet { color: #fbbf24; }
+        .power-pellet { color: #f59e0b; animation: pulse 1s infinite; }
+        .pacman { color: #facc15; font-weight: bold; }
+        .ghost { font-weight: bold; }
+        .ghost-1 { color: #ef4444; }
+        .ghost-2 { color: #ec4899; }
+        .ghost-3 { color: #14b8a6; }
+        .ghost-4 { color: #f97316; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex flex-col items-center justify-center bg-[url('https://images.pexels.com/photos/1599577/pexels-photo-1599577.jpeg')] bg-cover bg-center">
+    <div id="start-screen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-10 transition-opacity duration-500">
+        <div class="text-center p-8 bg-gray-800 rounded-lg max-w-md">
+            <h1 class="text-5xl font-bold text-yellow-400 mb-6">PAC-MAN</h1>
+            <p class="text-white mb-8 text-xl">ASCII Edition</p>
+            <button id="start-btn" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-colors">
+                Press ENTER to Play
+            </button>
+        </div>
+    </div>
+
+    <div id="game-container" class="hidden bg-black bg-opacity-70 p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+            <div class="text-white text-xl">
+                Score: <span id="score">0</span>
+            </div>
+            <div class="text-white text-xl">
+                Lives: <span id="lives">3</span>
+            </div>
+        </div>
+        <div id="game-grid" class="game-grid text-2xl text-white"></div>
+    </div>
+
+    <div id="game-over-screen" class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-80 z-10">
+        <div class="text-center p-8 bg-gray-800 rounded-lg max-w-md">
+            <h2 class="text-4xl font-bold text-red-500 mb-4">GAME OVER</h2>
+            <p class="text-white mb-6 text-xl">Final Score: <span id="final-score">0</span></p>
+            <button id="restart-btn" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-bold rounded-lg transition-colors">
+                Play Again
+            </button>
+        </div>
+    </div>
+
+    <audio id="chomp-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-jump-coin-216.mp3"></audio>
+    <audio id="ghost-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3"></audio>
+    <audio id="game-over-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-retro-arcade-lose-2027.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
